@@ -1,0 +1,2 @@
+Devops test server----------CORE-APK
+Devops test server----------API

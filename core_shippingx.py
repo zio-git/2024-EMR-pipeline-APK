@@ -53,11 +53,11 @@ for site_id in cluster['site']:
 
     if success:
          # check if APK Exist
-        check_apk_file = f"ssh {site['username']}@{site['ip_address']} 'if [ -f :/var/www/APK-FILE ]; then echo 'File exists, deleting it...'; rm :/var/www/APK-FILE; else echo 'APK File not found'; fi'"
+        check_apk_file = f"ssh {site['username']}@{site['ip_address']} 'if [ -f :/var/www/EMR-APK ]; then echo 'File exists, deleting it...'; rm :/var/www/EMR-APK; else echo 'APK File not found'; fi'"
         os.system(check_apk_file)
 
         # Ship API script to remote site
-        push_core_script = f"rsync -r APK-FILE {site['username']}@{site['ip_address']}:/var/www && echo 'APK File transfer complete...'"
+        push_core_script = f"rsync -r EMR-APK {site['username']}@{site['ip_address']}:/var/www && echo 'APK File transfer complete...'"
         os.system(push_core_script)
 
         # Write site to file
